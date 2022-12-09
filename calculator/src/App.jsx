@@ -1,32 +1,35 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [currentOut, setCurrentOut] = useState("");
+  const [previousOut, setPreviousOut] = useState("");
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id="table">
+        <div className='output'>
+            <div className='previous-output'>{previousOut}</div>
+            <div className='current-output'>{currentOut}</div>
+        </div>
+          <button onClick={() => setCurrentOut(currentOut + '7')}>7</button>
+          <button onClick={() => setCurrentOut(currentOut + '8')}>8</button>
+          <button onClick={() => setCurrentOut(currentOut + '9')}>9</button>
+          <button onClick={() => setCurrentOut(currentOut + ' / ')}>/</button>
+          <button onClick={() => setCurrentOut(currentOut + '4')}>4</button>
+          <button onClick={() => setCurrentOut(currentOut + '5')}>5</button>
+          <button onClick={() => setCurrentOut(currentOut + '6')}>6</button>
+          <button onClick={() => setCurrentOut(currentOut + ' * ')}>x</button>
+          <button onClick={() => setCurrentOut(currentOut + '1')}>1</button>
+          <button onClick={() => setCurrentOut(currentOut + '2')}>2</button>
+          <button onClick={() => setCurrentOut(currentOut + '3')}>3</button>
+          <button onClick={() => setCurrentOut(currentOut + ' - ')}>-</button>
+          <button onClick={() => setCurrentOut(currentOut + '0')}>0</button>
+          <button onClick={() => setCurrentOut(currentOut + '.')}>.</button>
+          <button onClick={() => setCurrentOut(currentOut + ' % ')}>%</button>
+          <button onClick={() => setCurrentOut(currentOut + ' + ')}>+</button>
+          <button id="big-btn" onClick={() => {setCurrentOut(currentOut == "" ? "" : eval(currentOut)); setPreviousOut(currentOut)}}>=</button>
+          <button id="ac-btn" onClick={() => {setCurrentOut(""); setPreviousOut("")}}>AC</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
